@@ -1,0 +1,31 @@
+Resume Upload
+      |
+      ↓
+     S3
+      |
+      ↓
+ResumeParser Lambda
+      |
+      ↓
+Textract + Comprehend
+      |
+      ↓
+Candidates DynamoDB
+      |
+      ↓
+DynamoDB Stream
+      |
+      ↓
+SkillNormalizer Lambda
+      |
+      ↓
+CandidateMatcher Lambda
+      |
+      ↓
+CandidateNotification Lambda
+      |
+      ↓
+SNS
+      |
+      ↓
+Recruiter Email

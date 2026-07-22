@@ -1,0 +1,119 @@
+# Project Overview
+
+## Project Name
+
+Intelligent AI-Powered Recruitment Pipeline Using AWS
+
+---
+
+## Introduction
+
+The Intelligent Recruitment Pipeline is an automated recruitment screening system built using AWS serverless and AI services.
+
+The project helps recruiters automatically process resumes, extract candidate information, analyze technical skills, match candidates with job requirements, and receive notifications for shortlisted candidates.
+
+---
+
+## Business Problem
+
+Recruiters spend significant time manually reviewing resumes and identifying suitable candidates.
+
+The main challenges are:
+
+- Large number of resumes
+- Manual skill identification
+- Slow candidate selection process
+- Inconsistent evaluation
+
+---
+
+## Solution
+
+We implemented an AWS-based automated recruitment workflow.
+
+The solution:
+
+1. Stores resumes in Amazon S3
+2. Extracts resume information using Amazon Textract
+3. Identifies skills using Amazon Comprehend
+4. Stores candidate information in DynamoDB
+5. Normalizes candidate skills using Lambda
+6. Matches skills with job requirements
+7. Calculates candidate score
+8. Sends recruiter notifications using SNS
+
+---
+
+## Architecture Components
+
+### Amazon S3
+
+Stores candidate resume documents.
+
+---
+
+### AWS Lambda
+
+Multiple Lambda functions perform different tasks:
+
+- ResumeParser Lambda
+- JobProcessor Lambda
+- SkillNormalizer Lambda
+- CandidateMatcher Lambda
+- CandidateNotification Lambda
+
+---
+
+### Amazon Textract
+
+Extracts text and information from uploaded resumes.
+
+---
+
+### Amazon Comprehend
+
+Uses Natural Language Processing to identify skills and entities.
+
+---
+
+### Amazon DynamoDB
+
+Stores candidate information including:
+
+- Name
+- Skills
+- Experience
+- Match Score
+- Status
+
+---
+
+### DynamoDB Streams
+
+Captures database changes and triggers notifications.
+
+---
+
+### Amazon SNS
+
+Sends email notifications to recruiters.
+
+---
+
+## Final Result
+
+The completed system automatically identifies suitable candidates and sends real-time recruiter notifications.
+
+Example:
+
+Candidate:
+
+Srikar Ryali
+
+Match Score:
+
+78%
+
+Status:
+
+Shortlisted

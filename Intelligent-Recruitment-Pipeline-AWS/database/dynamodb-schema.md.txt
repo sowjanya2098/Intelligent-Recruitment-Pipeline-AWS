@@ -1,0 +1,124 @@
+# DynamoDB Schema Documentation
+
+## Table Name
+
+Candidates
+
+---
+
+## Purpose
+
+The Candidates table stores extracted candidate information, skills, matching results, and recruitment status.
+
+---
+
+## Primary Key
+
+Partition Key:
+
+candidate_id
+
+
+Type:
+
+
+String
+
+---
+
+## Table Attributes
+
+| Attribute | Data Type | Description |
+|---|---|---|
+| candidate_id | String | Unique candidate identifier |
+| name | String | Candidate name |
+| skills | List | Extracted candidate skills |
+| experience | String | Candidate experience |
+| location | String | Candidate location |
+| organization | String | Current organization |
+| resume_file | String | Resume S3 location |
+| match_score | Number | Candidate matching percentage |
+| status | String | Shortlisted or Rejected |
+
+---
+
+## Sample Record
+candidate_id:
+30586ebe-e24e-4a3e-afda-e945fe08c319
+
+name:
+Srikar Ryali
+
+skills:
+lambda
+s3
+dynamodb
+api gateway
+sns
+
+experience:
+5 years
+
+match_score:
+78
+
+status:
+Shortlisted
+
+
+---
+
+## DynamoDB Stream
+
+DynamoDB Streams is enabled on the Candidates table.
+
+Purpose:
+
+- Capture candidate status changes
+- Trigger notification Lambda
+- Send recruiter email alerts
+
+Example:
+
+Before:
+
+status = Processing
+
+
+After:
+
+
+status = Shortlisted
+
+
+This change triggers:
+
+
+DynamoDB Stream
+|
+↓
+CandidateNotification Lambda
+|
+↓
+SNS Email Notification
+
+
+---
+
+## Database Workflow
+Resume Data
+|
+↓
+Candidate Processing
+|
+↓
+DynamoDB Candidates Table
+|
+↓
+Match Score Update
+|
+↓
+Status Change
+|
+↓
+Notification Trigger
